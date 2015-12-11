@@ -15,6 +15,8 @@ sudo dpkg -i libapparmor.deb
 tar xzf dockerneeds.tar ; mv docker ../ ; cd .. ; chmod +x docker ; \
 	export DOCKER_HOST="tcp://$BUILD_DOCKER_HOST:2376" DOCKER_TLS_VERIFY=1 DOCKER_CONFIG=./dockercfg
 
+git submodule init ; git submodule sync
+
 sed -i s/PLACEHOLDER_ADMIN_PASSWORD/$ADMIN_PASSWORD/g ./Dockerfile
 
 ./docker build -t gameon-docs .
